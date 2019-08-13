@@ -15,6 +15,8 @@
     </engines>
 
     <platform name="android">
+        <preference name="ROLLBAR_ACCESS_TOKEN" />
+
         <!-- production reference to rollbar-android -->
         <framework src="com.rollbar:rollbar-android:1.+"/>
 
@@ -43,9 +45,13 @@
                 <param name="onload" value="true" />
             </feature>
         </config-file>
+        <config-file target="AndroidManifest.xml" parent="/*">
+            <meta-data android:name="com.rollbar.android.ACCESS_TOKEN" android:value="$ROLLBAR_ACCESS_TOKEN"/>
+        </config-file>
     </platform>
 
     <platform name="ios">
+        <preference name="ROLLBAR_ACCESS_TOKEN" />
         <podspec>
           <config>
             <source url="https://github.com/CocoaPods/Specs.git"/>
